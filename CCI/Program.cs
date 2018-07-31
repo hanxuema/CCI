@@ -19,21 +19,17 @@ namespace CCI
         {
             var str = stringValue.ToLower();
             var result = true;
-            var _str = str;
-            for (int i = 0; i < str.Length; i++)
+            var dic = new Dictionary<char, char>();
+            foreach (var c in str)
             {
-                var count = 0;
-                for (int k = 0; k < _str.Length; k++)
+                if (dic.ContainsKey(c))
                 {
-                    if (str[i].Equals(_str[k]))
-                    {
-                        count++;
-                    }
-                    if (count >= 2)
-                    {
-                        result = false;
-                        break;
-                    }
+                    result = false;
+                    break;
+                }
+                else
+                {
+                    dic.Add(c, c);
                 }
             }
             return result;
