@@ -60,5 +60,27 @@ namespace CCI.Tests
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod()]
+        public void CheckPermutationShouldReturnTrueIfFirstisABCAndSecondIsCBA()
+        {
+            var result = Program.CheckPermutation("ABC","CBA");
+
+            Assert.IsTrue(result);
+        }
+        [TestMethod()]
+        public void CheckPermutationShouldReturnTrueIfFirstisABCDAndSecondIsDCBA()
+        {
+            var result = Program.CheckPermutation("ABCD", "DCBA");
+
+            Assert.IsTrue(result);
+        }
+        [TestMethod()]
+        public void CheckPermutationShouldReturnTrueIfFirstisABCDEAndSecondIsDCBA()
+        {
+            var result = Program.CheckPermutation("ABCDE", "DCBA");
+
+            Assert.IsFalse(result);
+        }
     }
 }

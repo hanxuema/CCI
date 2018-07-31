@@ -34,5 +34,31 @@ namespace CCI
             }
             return result;
         }
+
+        public static bool CheckPermutation(string first, string second)
+        {
+            if (first.Length != second.Length)
+            {
+                return false;
+            }
+            var result = true;
+            var i = 0;
+            var k = second.Length - 1;
+            do
+            {
+                if (first[i] != second[k])
+                {
+                    result = false;
+                    break;
+                }
+                else
+                {
+                    i++;
+                    k--;
+                }
+            } while (!result && i < first.Length);
+
+            return result;
+        }
     }
 }
