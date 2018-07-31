@@ -82,5 +82,18 @@ namespace CCI.Tests
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod()]
+        public void URLify()
+        {
+            var result = Program.URLify("Mr John Smith    "); 
+            Assert.AreEqual(result, "Mr%20John%20Smith%20");
+              result = Program.URLify("Mr John    Smith    ");
+            Assert.AreEqual(result, "Mr%20John%20Smith%20");
+              result = Program.URLify("Mr    John   Smith    ");
+            Assert.AreEqual(result, "Mr%20John%20Smith%20");
+              result = Program.URLify("Mr   John    Smith       ");
+            Assert.AreEqual(result, "Mr%20John%20Smith%20");
+        }
     }
 }

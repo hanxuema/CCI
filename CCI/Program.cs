@@ -60,5 +60,31 @@ namespace CCI
 
             return result;
         }
+
+        public static string URLify(string value)
+        { 
+            var spaceChar = "%20";
+
+            StringBuilder sb = new StringBuilder();
+            var isPreSpace = false;
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (value[i] != ' ')
+                {
+                    sb.Append(value[i]);
+                    isPreSpace = false;
+                }
+                else
+                {
+                    if (isPreSpace)
+                    {
+                        continue;
+                    }
+                    sb.Append(spaceChar);
+                    isPreSpace = true;
+                }
+            }
+            return sb.ToString();
+        }
     }
 }
