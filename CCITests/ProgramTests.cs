@@ -99,7 +99,7 @@ namespace CCI.Tests
         [TestMethod()]
         public void checkIfOneCharacterReplaceTestshouldReturnTrue()
         {
-            var result = Program.checkIfOneCharacterReplace("pale","bale");
+            var result = Program.checkIfOneCharacterReplace("pale", "bale");
             Assert.IsTrue(result);
         }
 
@@ -128,7 +128,7 @@ namespace CCI.Tests
         public void OneAwayReturnTruepaleple()
         {
             var result = Program.OneAway("pale", "ple");
-            Assert.AreEqual(result,true);
+            Assert.AreEqual(result, true);
         }
         [TestMethod()]
         public void OneAwayReturnTruepalespale()
@@ -147,6 +147,16 @@ namespace CCI.Tests
         {
             var result = Program.OneAway("pale", "bake");
             Assert.AreEqual(result, false);
+        }
+
+        [TestMethod()]
+        public void StringCompressionTest()
+        {
+            var result = Program.StringCompression("aabcccccaaa");
+            Assert.AreEqual(result, "a2b1c5a3");
+
+            result = Program.StringCompression("aaabBcccccaaa");
+            Assert.AreEqual(result, "a3b1B1c5a3");
         }
     }
 }

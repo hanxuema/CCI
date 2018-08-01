@@ -151,5 +151,48 @@ namespace CCI
             }
             return sb.ToString();
         }
+
+        public static string StringCompression(string value)
+        {
+            StringBuilder result = new StringBuilder();
+            var count = 1;
+            var temp = "";
+            var nextIsSame = false;
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (i + 1 == value.Length)
+                {
+                    nextIsSame = false; 
+                }
+                else
+                {
+
+                    if (value[i] == value[i + 1])
+                    {
+                        if (count == 1)
+                        {
+                            temp = value[i].ToString();
+                        }
+                        nextIsSame = true;
+                        count++;
+                    }
+                    else
+                    {
+                        temp = value[i].ToString();
+                        nextIsSame = false;
+                    } 
+                }
+                if (!nextIsSame)
+                {
+                    result.Append(string.Format("{0}{1}", temp, count));
+
+                    count = 1;
+                }
+
+            }
+
+
+            return result.ToString();
+        }
     }
 }
