@@ -64,7 +64,7 @@ namespace CCI.Tests
         [TestMethod()]
         public void CheckPermutationShouldReturnTrueIfFirstisABCAndSecondIsCBA()
         {
-            var result = Program.CheckPermutation("ABC","CBA");
+            var result = Program.CheckPermutation("ABC", "CBA");
 
             Assert.IsTrue(result);
         }
@@ -86,14 +86,67 @@ namespace CCI.Tests
         [TestMethod()]
         public void URLify()
         {
-            var result = Program.URLify("Mr John Smith    "); 
+            var result = Program.URLify("Mr John Smith    ");
             Assert.AreEqual(result, "Mr%20John%20Smith%20");
-              result = Program.URLify("Mr John    Smith    ");
+            result = Program.URLify("Mr John    Smith    ");
             Assert.AreEqual(result, "Mr%20John%20Smith%20");
-              result = Program.URLify("Mr    John   Smith    ");
+            result = Program.URLify("Mr    John   Smith    ");
             Assert.AreEqual(result, "Mr%20John%20Smith%20");
-              result = Program.URLify("Mr   John    Smith       ");
+            result = Program.URLify("Mr   John    Smith       ");
             Assert.AreEqual(result, "Mr%20John%20Smith%20");
+        }
+
+        [TestMethod()]
+        public void checkIfOneCharacterReplaceTestshouldReturnTrue()
+        {
+            var result = Program.checkIfOneCharacterReplace("pale","bale");
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void checkIfOneCharacterReplaceTestshouldReturnFalse()
+        {
+            var result = Program.checkIfOneCharacterReplace("pale", "bake");
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod()]
+        public void checkIfOnecharacterRemovedShouldReturnTrue()
+        {
+            var result = Program.checkIfOnecharacterRemoved("pale", "pales");
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void checkIfOnecharacterRemovedShouldReturnTrueIfPaleAndPaele()
+        {
+            var result = Program.checkIfOnecharacterRemoved("pale", "paele");
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod()]
+        public void OneAwayReturnTruepaleple()
+        {
+            var result = Program.OneAway("pale", "ple");
+            Assert.AreEqual(result,true);
+        }
+        [TestMethod()]
+        public void OneAwayReturnTruepalespale()
+        {
+            var result = Program.OneAway("pales", "pale");
+            Assert.AreEqual(result, true);
+        }
+        [TestMethod()]
+        public void OneAwayReturnTruepalebale()
+        {
+            var result = Program.OneAway("pale", "bale");
+            Assert.AreEqual(result, true);
+        }
+        [TestMethod()]
+        public void OneAwayReturnTruepalebake()
+        {
+            var result = Program.OneAway("pale", "bake");
+            Assert.AreEqual(result, false);
         }
     }
 }

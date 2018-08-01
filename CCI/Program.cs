@@ -61,8 +61,73 @@ namespace CCI
             return result;
         }
 
+        public static bool OneAway(string first, string second)
+        {
+            var result = false;
+
+            if (Math.Abs(first.Length - second.Length) > 1)
+            {
+                return result;
+            }
+            if (first.Length == second.Length)
+            {
+                return checkIfOneCharacterReplace(first, second);
+            }
+            if (first.Length < second.Length)
+            {
+                return checkIfOnecharacterRemoved(first, second);
+            }
+            if (second.Length < first.Length)
+            {
+                return checkIfOnecharacterRemoved(second, first);
+            }
+            return result;
+        }
+
+        public static bool checkIfOnecharacterRemoved(string small, string big)
+        {
+            var result = true;
+            var count = 0;
+            for (int i = 0; i < small.Length; i++)
+            {
+                if (i == small.Length - 1)
+                {
+                    return true;
+                }
+                if (small[i] != big[i])
+                {
+                    count++;
+                }
+                if (count > 1)
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
+
+        public static bool checkIfOneCharacterReplace(string first, string second)
+        {
+            var result = true;
+            var count = 0;
+            for (int i = 0; i < first.Length; i++)
+            {
+                if (first[i] != second[i])
+                {
+                    count++;
+                }
+                if (count > 1)
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
+
         public static string URLify(string value)
-        { 
+        {
             var spaceChar = "%20";
 
             StringBuilder sb = new StringBuilder();
