@@ -162,7 +162,7 @@ namespace CCI
             {
                 if (i + 1 == value.Length)
                 {
-                    nextIsSame = false; 
+                    nextIsSame = false;
                 }
                 else
                 {
@@ -180,7 +180,7 @@ namespace CCI
                     {
                         temp = value[i].ToString();
                         nextIsSame = false;
-                    } 
+                    }
                 }
                 if (!nextIsSame)
                 {
@@ -194,5 +194,42 @@ namespace CCI
 
             return result.ToString();
         }
+
+        //check if string second is the rotation of string first
+        public static bool stringRotation(string first, string second)
+        {
+            var result = false;
+            for (int i = 0; i < first.Length; i++)
+            {
+                second = shirtString(second, 1);
+                if (first == second)
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        public static string shirtString(string value, int d)
+        {
+            //create new array with same length 
+            var newArr = new char[value.Length];
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (i + d > value.Length - 1)
+                {
+                    newArr[i] = value[i + d - value.Length];
+                }
+                else
+                {
+                    newArr[i] = value[i + d];
+                }
+            }
+
+            return new string(newArr);
+        }
+
     }
 }

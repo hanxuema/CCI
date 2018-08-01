@@ -158,5 +158,35 @@ namespace CCI.Tests
             result = Program.StringCompression("aaabBcccccaaa");
             Assert.AreEqual(result, "a3b1B1c5a3");
         }
+
+        [TestMethod()]
+        public void shirtString()
+        {
+            var result = Program.shirtString("ABCDE", 1);
+            Assert.AreEqual(result, "BCDEA");
+
+            result = Program.shirtString("BCDEA", 1);
+            Assert.AreEqual(result, "CDEAB");
+        }
+
+        [TestMethod()]
+        public void stringRotation()
+        {
+            var result = Program.stringRotation("waterbottle", "erbottlewat");
+            Assert.AreEqual(result, true);
+
+            result = Program.stringRotation("waterbottle", "rbottlewate");
+            Assert.AreEqual(result, true);
+
+            result = Program.stringRotation("waterbottle", "bottlewater");
+            Assert.AreEqual(result, true);
+
+            result = Program.stringRotation("waterbottle", "ottlewaterb");
+
+            Assert.AreEqual(result, true);
+            result = Program.stringRotation("waterbottle", "ttlewaterbo");
+            Assert.AreEqual(result, true);
+        }
+
     }
 }
