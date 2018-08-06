@@ -59,7 +59,7 @@ namespace CCI
 
         public void AddLast(LinkedListNode<T> node)
         {
-            if (Count== 0)
+            if (Count == 0)
             {
                 Head = node;
                 Tail = node;
@@ -70,7 +70,7 @@ namespace CCI
                 Tail = node;
                 temp.Next = Tail;
             }
-          
+
             Count++;
             if (Count == 1)
             {
@@ -80,17 +80,27 @@ namespace CCI
 
         public void RemoveFirst()
         {
+            if (Count != 0)
+            {
+                Head = Head.Next;
+                Count--;
+
+                if (Count == 0)
+                {
+                    Tail = null;
+                }
+            }
+        }
+
+        public void RemoveLast()
+        {
             Tail = null;
+
             if (Count == 1)
             {
                 Head = null;
             }
             Count--;
-        }
-
-        public void RemoveLast()
-        {
-
         }
 
         public void PrintList(Node node)
@@ -115,7 +125,16 @@ namespace CCI
 
         public bool Contains(T item)
         {
-            throw new NotImplementedException();
+            LinkedListNode<T> current = Head;
+            while (current != null)
+            {
+                if (current.Value.Equals(item))
+                {
+                    return true;
+                }
+                current = current.Next;
+            }
+            return false;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
@@ -130,7 +149,12 @@ namespace CCI
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            LinkedListNode<T> current = Head;
+            while (current != null)
+            {
+                yield return current.Value;
+                current = current.Next;
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()

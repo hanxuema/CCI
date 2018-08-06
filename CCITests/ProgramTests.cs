@@ -188,5 +188,11 @@ namespace CCI.Tests
             Assert.AreEqual(result, true);
         }
 
+        [TestMethod()]
+        public void removeDuplicateFromLinkedListTest()
+        {
+            LinkedListNode<int> node = new LinkedListNode<int>(5);
+          
+        }
     }
 }

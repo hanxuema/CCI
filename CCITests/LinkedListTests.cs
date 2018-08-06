@@ -57,6 +57,12 @@ namespace CCI.Tests
             var linkedList = new LinkedList<int>();
             linkedList.Add(1);
             Assert.AreEqual(linkedList.Count, 1);
+            linkedList.RemoveFirst();
+            Assert.AreEqual(linkedList.Count, 0);
+            Assert.AreEqual(linkedList.Head, null);
+            Assert.AreEqual(linkedList.Tail, null);
+
+            linkedList.Add(1);
             linkedList.Add(2);
             Assert.AreEqual(linkedList.Count, 2);
             linkedList.RemoveFirst();
@@ -66,9 +72,19 @@ namespace CCI.Tests
         [TestMethod()]
         public void RemoveLastTest()
         {
+            var linkedList = new LinkedList<int>();
+            linkedList.Add(1);
+            Assert.AreEqual(linkedList.Count, 1);
+            linkedList.Add(2);
+            Assert.AreEqual(linkedList.Count, 2);
+            linkedList.RemoveLast();
 
+            Assert.AreEqual(linkedList.Count, 1);
+
+            Assert.AreEqual(linkedList.Head.Value, 1); 
+            Assert.AreEqual(linkedList.Tail.Value , 1);
         }
-
+  
         [TestMethod()]
         public void PrintListTest()
         {
@@ -95,7 +111,13 @@ namespace CCI.Tests
         [TestMethod()]
         public void ContainsTest()
         {
+            var linkedList = new LinkedList<int>();
+            linkedList.Add(1);
+            linkedList.Add(2);
 
+            Assert.IsTrue(linkedList.Contains(1)); 
+            Assert.IsTrue(linkedList.Contains(2));
+            Assert.IsFalse(linkedList.Contains(3));
         }
 
         [TestMethod()]

@@ -231,5 +231,24 @@ namespace CCI
             return new string(newArr);
         }
 
+        public static void removeDuplicateFromLinkedList(LinkedListNode<int> node)
+        {
+            HashSet<int> hash = new HashSet<int>();
+            LinkedListNode<int> previous = null;
+            while (node != null)
+            {
+                if (hash.Contains(previous.Value))
+                {
+                    previous.Next = node.Next;
+                }
+                else
+                {
+                    hash.Add(node.Value);
+                    previous = node;
+                }
+                node = node.Next;
+            }
+        }
+
     }
 }
