@@ -192,7 +192,18 @@ namespace CCI.Tests
         public void removeDuplicateFromLinkedListTest()
         {
             LinkedListNode<int> node = new LinkedListNode<int>(5);
-          
+
+        }
+
+        [TestMethod()]
+        public void TripleStepDynamicTest()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var first = Program.TripleStep(i);
+                var second = Program.TripleStepDynamic(i);
+                Assert.AreEqual(first, second);
+            }
         }
     }
 }

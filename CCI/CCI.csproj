@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallCenter\CallCenter.cs" />
+    <Compile Include="CallCenter\Director.cs" />
+    <Compile Include="CallCenter\Employee.cs" />
+    <Compile Include="CallCenter\Manager.cs" />
+    <Compile Include="CallCenter\Respondent.cs" />
+    <Compile Include="Queue.cs" />
     <Compile Include="Stack.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="Program.cs" />

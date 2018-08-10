@@ -37,7 +37,6 @@ namespace CCI
             var node = new StackNode<T>(item);
             node.pre = top;
             top = node;
-
         }
 
         public T Peek()
@@ -47,7 +46,7 @@ namespace CCI
                 throw new Exception();
             }
             else
-            { 
+            {
                 return top.data;
             }
         }
@@ -60,5 +59,11 @@ namespace CCI
             }
             return false;
         }
+    }
+
+    public class StackWithMin : Stack<int>
+    {
+        private StackNode<int> min;
+         
     }
 }

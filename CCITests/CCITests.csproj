@@ -51,9 +51,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CallCenter\CallCenterTests.cs" />
     <Compile Include="LinkedListTests.cs" />
     <Compile Include="ProgramTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueTests.cs" />
     <Compile Include="StackTests.cs" />
   </ItemGroup>
   <ItemGroup>

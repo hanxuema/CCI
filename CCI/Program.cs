@@ -10,6 +10,7 @@ namespace CCI
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine(TripleStep(10));
             Console.WriteLine("Hello World!");
             Console.ReadKey();
         }
@@ -247,6 +248,72 @@ namespace CCI
                     previous = node;
                 }
                 node = node.Next;
+            }
+        }
+
+        public static int TripleStep(int numberOfSteps)
+        {
+            if (numberOfSteps < 0)
+            {
+                return 0;
+            }
+            if (numberOfSteps == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return TripleStep(numberOfSteps - 1) + TripleStep(numberOfSteps - 2) + TripleStep(numberOfSteps - 3);
+            }
+
+        }
+
+        public static int TripleStepDynamic(int numberOfSteps)
+        {
+            int[] memo = new int[numberOfSteps + 1];
+            for (int i = 0; i < memo.Length; i++)
+            {
+                memo[i] = -1;
+            }
+            return countWays(numberOfSteps, memo);
+        }
+
+        private static int countWays(int numberOfSteps, int[] memo)
+        {
+            if (numberOfSteps < 0)
+            {
+                return 0;
+            }
+            else if (numberOfSteps == 0)
+            {
+                return 1;
+            }
+            else if (memo[numberOfSteps] > -1)
+            {
+                return memo[numberOfSteps];
+            }
+            else
+            {
+                memo[numberOfSteps] = countWays(numberOfSteps - 1, memo) + countWays(numberOfSteps - 2, memo) + countWays(numberOfSteps - 3, memo);
+                return memo[numberOfSteps];
+            }
+        }
+
+        static int superDigit(string n, int k)
+        {
+            if (int.Parse(n) <= 10)
+            {
+                return int.Parse(n);
+            }
+            else
+            {
+                var sum = 0;
+                for (int i = 0; i < k; i++)
+                {
+                    var value = int.Parse(n[i].ToString());
+                    sum = sum + value;
+                }
+                return superDigit(sum.ToString(), sum.ToString().Length);
             }
         }
 
